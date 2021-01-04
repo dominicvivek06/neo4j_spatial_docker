@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  neo4j:
+    image: dominicvivek06/neo4j_spatial
+    hostname: neo4j_35_spatial
+    container_name: neo4j_35_spatial
+    volumes:
+      - ./neo4j/data:/var/lib/neo4j/data
+      - ./neo4j/import:/var/lib/neo4j/import
+    environment:
+      - NEO4J_dbms_connectors_default__listen__address=0.0.0.0
+      - NEO4J_metrics_enabled=false 
+      - NEO4J_dbms_memory_pagecache_size=1G
+      - NEO4J_dbms.memory.heap.initial_size=2G
+      - NEO4J_dbms_memory_heap_max__size=4G
+      - NEO4J_dbms_directories_import=/var/lib/neo4j/import
+      - NEO4J_apoc_spatial_geocode_provider=osm
+      - NEO4J_apoc_spatial_geocode_osm_throttle=5000
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*,spatial.*
+      - NEO4J_dbms_security_procedures_whitelist=gds.*,apoc.*,spatial.*
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+      - "7473:7473"
