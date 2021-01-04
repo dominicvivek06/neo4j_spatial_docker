@@ -4,7 +4,6 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Usage](#usage)
 - [Prerequisites](#prerequisites)
 - [Installing](#installing)
 
